@@ -36,7 +36,7 @@ class AuthController extends Controller
             $imagePath = public_path('/avatars'),
             $imageFile->move($imagePath, $imageName),
             'image' => $imageName,
-            'admin'=>$request->admin
+            'admin' => $request->admin
         ];
         $user = User::create($data);
         if ($user) {
@@ -69,7 +69,7 @@ class AuthController extends Controller
             ], 401);
         }
 
-        $token = auth()->user()->createToken('__sign_token')->plainTextToken;
+        $token = auth()->user()->createToken($request->deviceName)->plainTextToken;
         $user = $this->isAuth($token);
         return response()->json([
             'status' => 'success',

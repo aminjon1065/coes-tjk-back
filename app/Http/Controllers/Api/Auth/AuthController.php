@@ -35,7 +35,8 @@ class AuthController extends Controller
             $imageName = $request->name . '-' . time() . '.' . $imageFile->getClientOriginalExtension(),
             $imagePath = public_path('/avatars'),
             $imageFile->move($imagePath, $imageName),
-            'image' => $imageName
+            'image' => $imageName,
+            'admin'=>$request->admin
         ];
         $user = User::create($data);
         if ($user) {
@@ -93,6 +94,7 @@ class AuthController extends Controller
         $user['name'] = $userAllInfo['name'];
         $user['email'] = $userAllInfo['email'];
         $user['image'] = $userAllInfo['image'];
+        $user['admin'] = $userAllInfo['admin'];
         return $user;
     }
 }

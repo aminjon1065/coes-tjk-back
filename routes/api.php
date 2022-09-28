@@ -19,7 +19,7 @@ Route::prefix('v1')->group(function () {
     Route::post('/what-to-do', [\App\Http\Controllers\WhatToDoController::class, 'store']);
     Route::get('/what-to-do', [\App\Http\Controllers\WhatToDoController::class, 'index']);
 });
-
+Route::get('/file', [\App\Http\Controllers\Api\Auth\AuthController::class, 'getFile']);
 //Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //    return $request->user();
 //});

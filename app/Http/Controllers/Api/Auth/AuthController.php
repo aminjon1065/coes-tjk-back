@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
@@ -33,9 +34,10 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
             $imageFile = $request->file('image'),
             $imageName = $request->name . '-' . time() . '.' . $imageFile->getClientOriginalExtension(),
-            $imagePath = public_path('/avatars'),
-            $imageFile->move($imagePath, $imageName),
-            'image' => $imageName,
+            $storagePath = Storage::disk('local')->put('/public/avatars', $imageFile),
+//            $imagePath = storage_path('/avatars'),
+//            $imageFile->move($imagePath, $imageName),
+            'image' => $storagePath,
             'admin' => $request->admin
         ];
         $user = User::create($data);
@@ -97,4 +99,9 @@ class AuthController extends Controller
         $user['admin'] = $userAllInfo['admin'];
         return $user;
     }
+
+     public function getFile($file)
+     {
+         return response()->file($file);
+     }
 }

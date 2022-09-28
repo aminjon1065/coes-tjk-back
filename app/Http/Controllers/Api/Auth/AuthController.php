@@ -34,11 +34,11 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
             $imageFile = $request->file('image'),
             $imageName = $request->name . '-' . time() . '.' . $imageFile->getClientOriginalExtension(),
-            $storagePath = Storage::disk('local')->put('/', $imageFile),
+//            $storagePath = Storage::disk('local')->put('/', $imageFile),
 //        $storagePath = $imageFile->store('avatars'),
-//            $imagePath = storage_path('/avatars'),
-//            $imageFile->move($imagePath, $imageName),
-            'image' => $storagePath,
+            $imagePath = public_path('/avatars'),
+            $imageFile->move($imagePath, $imageName),
+            'image' => $imageName,
             'admin' => $request->admin
         ];
         $user = User::create($data);

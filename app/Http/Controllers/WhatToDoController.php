@@ -38,14 +38,12 @@ class WhatToDoController extends Controller
     {
         $data = [
             'title' => $request->title,
-            'description' => $request->description,
             $image = $request->file('image'),
             $imageName = $image->getClientOriginalName() . '-' . time() . '.' . $image->getClientOriginalExtension(),
             $imagePath = public_path('/what-to-do'),
             $image->move($imagePath, $imageName),
             'image' => $imageName,
         ];
-
         $whatToDo = WhatToDo::create($data);
         return response()->json($whatToDo);
     }

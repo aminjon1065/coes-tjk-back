@@ -5,11 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class WhatToDo extends Model
+class WhatToDoItem extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-      'title',
-      'image'
+        'name',
+        'description',
+        'image',
+        'what_to_dos_id'
     ];
 }

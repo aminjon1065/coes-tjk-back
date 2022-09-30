@@ -18,7 +18,8 @@ Route::prefix('v1')->group(function () {
     Route::get('/isAuth', [\App\Http\Controllers\Api\Auth\AuthController::class, 'isAuth'])->name('user.isAuth');
     Route::post('/login', [\App\Http\Controllers\Api\Auth\AuthController::class, 'login'])->name('user.login')->name('user.login');
     Route::post('/what-to-do', [\App\Http\Controllers\WhatToDoController::class, 'store']);
-    Route::get('/what-to-do', [\App\Http\Controllers\WhatToDoController::class, 'index']);
+    Route::post('/what-to-do-item', [\App\Http\Controllers\WhatToDoItemController::class, 'store']);
+    Route::get('/what-to-do-item', [\App\Http\Controllers\WhatToDoItemController::class, 'index']);
 });
 Route::get('/file', [\App\Http\Controllers\Api\Auth\AuthController::class, 'getFile']);
 //Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

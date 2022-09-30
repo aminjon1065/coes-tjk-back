@@ -101,6 +101,7 @@ class AuthController extends Controller
         return $user;
     }
 
+
      public function getFile($file)
      {
          return response()->file($file);

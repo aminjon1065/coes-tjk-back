@@ -65,13 +65,20 @@ class AuthController extends Controller
             'password' => '|required|string|min:6',
         ]);
 
-        if (!Auth::attempt($attr)) {
+        $user = User::where('email', $request->email)->first();
+        if ($user === null) {
             return response()->json([
-                'status' => 'error',
-                'message' => 'Не правильный E-mail или пароль'
+                "message" => "Ползователь не найден"
             ], 401);
         }
-
+        if ($user) {
+            if (!Auth::attempt($attr)) {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Не правильный E-mail или пароль'
+                ], 401);
+            }
+        }
         $token = auth()->user()->createToken($request->deviceName)->plainTextToken;
         $user = $this->isAuth($token);
         return response()->json([
@@ -101,8 +108,8 @@ class AuthController extends Controller
         return $user;
     }
 
-     public function getFile($file)
-     {
-         return response()->file($file);
-     }
+    public function getFile($file)
+    {
+        return response()->file($file);
+    }
 }

@@ -15,6 +15,7 @@ class AuthController extends Controller
 
     function register(Request $request)
     {
+//        return response()->json($request);
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|unique:users,email',
@@ -55,7 +56,7 @@ class AuthController extends Controller
         return response()->json([
             'status' => 'error',
             'message' => 'Непредвиденная ошибка'
-        ], 422);
+        ], 409);
     }
 
     public function login(Request $request)
@@ -75,7 +76,7 @@ class AuthController extends Controller
             if (!Auth::attempt($attr)) {
                 return response()->json([
                     'status' => 'error',
-                    'message' => 'Не правильный E-mail или пароль'
+                    'message' => 'Не правильный пароль'
                 ], 401);
             }
         }

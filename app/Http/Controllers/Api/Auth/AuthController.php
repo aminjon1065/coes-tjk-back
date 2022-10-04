@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
@@ -39,7 +40,7 @@ class AuthController extends Controller
 //        $storagePath = $imageFile->store('avatars'),
             $imagePath = public_path('avatars'),
             $imageFile->move($imagePath, $imageName),
-            'image' => $imageName,
+            'image' => URL::to("/").$imagePath."/".$imageName,
             'admin' => $request->admin
         ];
         $user = User::create($data);

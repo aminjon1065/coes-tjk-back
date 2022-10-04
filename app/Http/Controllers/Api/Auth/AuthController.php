@@ -76,7 +76,7 @@ class AuthController extends Controller
             if (!Auth::attempt($attr)) {
                 return response()->json([
                     'status' => 'error',
-                    'message' => 'Не правильный пароль'
+                    'message' => 'Неправильный пароль'
                 ], 401);
             }
         }

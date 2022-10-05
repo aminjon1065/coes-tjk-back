@@ -40,7 +40,7 @@ class AuthController extends Controller
 //        $storagePath = $imageFile->store('avatars'),
             $imagePath = public_path('avatars'),
             $imageFile->move($imagePath, $imageName),
-            'image' => URL::to("/").$imagePath."/".$imageName,
+            'image' => URL::to("/")."/".$imageName,
             'admin' => $request->admin
         ];
         $user = User::create($data);

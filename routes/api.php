@@ -21,6 +21,11 @@ Route::prefix('v1')->group(function () {
     Route::post('/what-to-do-item', [\App\Http\Controllers\WhatToDoItemController::class, 'store']);
     Route::get('/what-to-do-item', [\App\Http\Controllers\WhatToDoItemController::class, 'index']);
 });
+Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::prefix('v1')->group(function () {
+        Route::get('/isAuth', [\App\Http\Controllers\Api\Auth\AuthController::class, 'isAuth'])->name('user.isAuth');
+    });
+});
 Route::get('/file', [\App\Http\Controllers\Api\Auth\AuthController::class, 'getFile']);
 //Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //    return $request->user();

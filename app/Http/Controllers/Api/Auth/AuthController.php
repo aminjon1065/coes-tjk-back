@@ -103,6 +103,7 @@ class AuthController extends Controller
 
     public function isAuth()
     {
+
         $userAllInfo = \auth()->user();
         $user['name'] = $userAllInfo['name'];
         $user['email'] = $userAllInfo['email'];

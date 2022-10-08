@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class CoesRecommends extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'description',
+        'image'
+    ];
 }

@@ -14,7 +14,8 @@ class CoesRecommendsController extends Controller
      */
     public function index()
     {
-        //
+        $recommends = CoesRecommends::all();
+        return response()->json($recommends);
     }
 
     /**
@@ -30,7 +31,7 @@ class CoesRecommendsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -41,18 +42,20 @@ class CoesRecommendsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\CoesRecommends  $coesRecommends
+     * @param  int  $id
+     * @param \App\Models\CoesRecommends $coesRecommends
      * @return \Illuminate\Http\Response
      */
-    public function show(CoesRecommends $coesRecommends)
+    public function show(CoesRecommends $coesRecommends, $id)
     {
-        //
+        $recommendsItem = CoesRecommends::findOrFail($id)->get();
+        return response()->json($recommendsItem);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\CoesRecommends  $coesRecommends
+     * @param \App\Models\CoesRecommends $coesRecommends
      * @return \Illuminate\Http\Response
      */
     public function edit(CoesRecommends $coesRecommends)
@@ -63,8 +66,8 @@ class CoesRecommendsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\CoesRecommends  $coesRecommends
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\CoesRecommends $coesRecommends
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, CoesRecommends $coesRecommends)
@@ -75,7 +78,7 @@ class CoesRecommendsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\CoesRecommends  $coesRecommends
+     * @param \App\Models\CoesRecommends $coesRecommends
      * @return \Illuminate\Http\Response
      */
     public function destroy(CoesRecommends $coesRecommends)

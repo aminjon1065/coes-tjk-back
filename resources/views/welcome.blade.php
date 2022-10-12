@@ -10,5 +10,6 @@
 </head>
 <body>
 <h1>Testing Backend mobile-App COES Tajikistan</h1>
+<p>{{PHP_VERSION}}</p>
 </body>
 </html>

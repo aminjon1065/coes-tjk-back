@@ -24,6 +24,7 @@ Route::prefix('v1')->group(function () {
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::prefix('v1')->group(function () {
         Route::get('/isAuth', [\App\Http\Controllers\Api\Auth\AuthController::class, 'isAuth'])->name('user.isAuth');
+        Route::post('/logout', [\App\Http\Controllers\Api\Auth\AuthController::class, 'logout'])->name('user.logout');
     });
 });
 Route::get('/file', [\App\Http\Controllers\Api\Auth\AuthController::class, 'getFile']);

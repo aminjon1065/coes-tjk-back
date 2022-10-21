@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::prefix('v1')->group(function () {
+    Route::get('/emergencies/{emergency}', [\App\Http\Controllers\EmergenciesCountController::class, 'index'])->name('emergencies.get');
+    Route::post('/emergencies', [\App\Http\Controllers\EmergenciesCountController::class, 'store'])->name('emergencies.post');
     Route::post('/register', [\App\Http\Controllers\Api\Auth\AuthController::class, 'register'])->name('user.register');
     Route::get('/isAuth', [\App\Http\Controllers\Api\Auth\AuthController::class, 'isAuth'])->name('user.isAuth');
     Route::post('/login', [\App\Http\Controllers\Api\Auth\AuthController::class, 'login'])->name('user.login')->name('user.login');

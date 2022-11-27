@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
 Route::prefix('v1')->group(function () {
     Route::get('/emergencies/{emergency}', [\App\Http\Controllers\EmergenciesCountController::class, 'index'])->name('emergencies.get');
     Route::post('/emergencies', [\App\Http\Controllers\EmergenciesCountController::class, 'store'])->name('emergencies.post');
@@ -23,12 +24,14 @@ Route::prefix('v1')->group(function () {
     Route::post('/what-to-do-item', [\App\Http\Controllers\WhatToDoItemController::class, 'store']);
     Route::get('/what-to-do-item', [\App\Http\Controllers\WhatToDoItemController::class, 'index']);
 });
+
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::prefix('v1')->group(function () {
         Route::get('/isAuth', [\App\Http\Controllers\Api\Auth\AuthController::class, 'isAuth'])->name('user.isAuth');
         Route::post('/logout', [\App\Http\Controllers\Api\Auth\AuthController::class, 'logout'])->name('user.logout');
     });
 });
+
 Route::get('/file', [\App\Http\Controllers\Api\Auth\AuthController::class, 'getFile']);
 //Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //    return $request->user();

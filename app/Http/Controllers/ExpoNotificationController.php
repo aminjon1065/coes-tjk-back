@@ -14,7 +14,9 @@ class ExpoNotificationController extends Controller
             "expoToken" => $request["expoToken"],
             "deviceName" => $request["deviceName"]
         ];
-        $token = new ExpoNotification($data);
+
+        $token = ExpoNotification::create($data);
+        return response()->json($token);
     }
 
     public function send(Request $request)

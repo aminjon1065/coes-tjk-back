@@ -23,6 +23,7 @@ Route::prefix('v1')->group(function () {
     Route::post('/what-to-do', [\App\Http\Controllers\WhatToDoController::class, 'store']);
     Route::post('/what-to-do-item', [\App\Http\Controllers\WhatToDoItemController::class, 'store']);
     Route::get('/what-to-do-item', [\App\Http\Controllers\WhatToDoItemController::class, 'index']);
+    Route::post("/notification-expo", [\App\Http\Controllers\ExpoNotificationController::class, "send"]);
 });
 
 Route::group(['middleware' => 'auth:sanctum'], function () {

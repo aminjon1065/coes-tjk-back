@@ -15,7 +15,7 @@ class CreateExpoNotificationsTable extends Migration
     {
         Schema::create('expo_notifications', function (Blueprint $table) {
             $table->id();
-            $table->text("expoToken");
+            $table->text("expoToken")->unique();
             $table->text("deviceName");
             $table->timestamps();
         });

@@ -29,7 +29,8 @@ class ExpoNotificationController extends Controller
             "to" => $expoTokens,
             "sound" => "default",
             "title" => $request["title"],
-            "body" => $request["body"]
+            "body" => $request["body"],
+            "badge"=>5
         ]);
         return $response;
     }

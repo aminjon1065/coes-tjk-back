@@ -30,7 +30,6 @@ class ExpoNotificationController extends Controller
             "sound" => "default",
             "title" => $request["title"],
             "body" => $request["body"],
-            'data' => ['test-data']
         ]);
         return $response;
     }

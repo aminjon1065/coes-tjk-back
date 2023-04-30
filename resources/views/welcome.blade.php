@@ -11,7 +11,9 @@
 <body>
 <h1>Testing Backend mobile-App COES Tajikistan</h1>
 <p>{{PHP_VERSION}}</p>
-<br />
+<br/>
+<p>{{app()->version()}}</p>
+<br/>
 <a href="https://github.com/aminjon1065" target="_blank">Find Source code</a>
 </body>
 </html>

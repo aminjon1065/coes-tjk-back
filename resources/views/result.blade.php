@@ -10,7 +10,7 @@
 <body>
 @foreach($result as $result)
     <p>
-        <a href="/storage/videos/${{$result->name}}">{{$result->name}}</a>
+        <a href="/storage/videos/{{$result->name}}">{{$result->name}}</a>
     </p>
 @endforeach
 </body>

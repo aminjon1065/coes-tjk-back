@@ -10,6 +10,7 @@
 </head>
 <body>
 <form action="/form" method="post" enctype="multipart/form-data">
+    @csrf
     <input type="file" name="videos[]" id="video">
     <button type="submit">Загрузить</button>
 </form>

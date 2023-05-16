@@ -23,3 +23,4 @@ Route::get('/', function () {
 });
 
 Route::post('form', [\App\Http\Controllers\VideosController::class, 'store']);
+Route::get('/result', [\App\Http\Controllers\VideosController::class, 'index']);

@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/', function () {
+    return view('form');
+});
+
+Route::post('form', [\App\Http\Controllers\VideosController::class, 'store']);
